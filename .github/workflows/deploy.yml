@@ -21,10 +21,12 @@ jobs:
           node-version: 20
           cache: 'npm'
 
-      - name: Install and Build
-        run: |
-          npm install
-          npm run build
+      - name: Install Dependencies
+        # We use --include=dev to ensure vite and other build tools are installed
+        run: npm install --include=dev
+
+      - name: Build
+        run: npm run build
         env:
           NODE_ENV: production
 
